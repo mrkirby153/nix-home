@@ -1,7 +1,10 @@
-{ pkgs, ...}: 
+{ pkgs, username, ...}: 
+let
+    inherit (pkgs.stdenv.hostPlatform) isDarwin;
+in
 {
-    home.username = "austin";
-    home.homeDirectory = "/home/austin";
+    home.username = "${username}";
+    home.homeDirectory = if !isDarwin then "/home/${username}" else "/Users/${username}";
     home.stateVersion = "22.11";
     programs.home-manager.enable = true;
 

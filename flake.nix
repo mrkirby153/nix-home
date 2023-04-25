@@ -22,6 +22,7 @@
 
         extraSpecialArgs = {
           inherit dwmblocks;
+          username = "austin";
         };
       };
     };
