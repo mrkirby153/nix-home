@@ -8,9 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dwmblocks.url = "github:mrkirby153/dwmblocks";
+    rnix-lsp.url = "github:nix-community/rnix-lsp";
   };
 
-  outputs = { self, nixpkgs, home-manager, dwmblocks, ... }: {
+  outputs = { self, nixpkgs, home-manager, dwmblocks, rnix-lsp, ... }: {
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
     defaultPackage.x86_64-darwin = home-manager.defaultPackage.x86_64-darwin;
 
@@ -22,6 +23,7 @@
 
         extraSpecialArgs = {
           inherit dwmblocks;
+          inherit rnix-lsp;
           username = "austin";
         };
       };
