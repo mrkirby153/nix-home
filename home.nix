@@ -1,7 +1,4 @@
 { pkgs, ...}: 
-let
-    custom-pkgs = import ./pkgs { pkgs = pkgs; };
-in
 {
     home.username = "austin";
     home.homeDirectory = "/home/austin";

@@ -28,4 +28,5 @@ case $COMMAND in
         ;;
 esac
 
-home-manager --max-jobs auto "$CMD" --flake .
+actual_hostname="${HOSTNAME:-$(hostname)}"
+home-manager --max-jobs auto "$CMD" --flake ".#$actual_hostname"
