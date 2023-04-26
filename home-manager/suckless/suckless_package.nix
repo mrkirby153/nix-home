@@ -14,11 +14,20 @@ stdenv.mkDerivation rec {
   buildInputs = with pkgs; [
     pkg-config
     xorg.libX11
+    xorg.libXft
   ] ++ extraDeps;
   makeFlags = [ "DESTDIR=$(out)" "PREFIX=" ];
   patchPhase = ''
-    sed -i 's|git|#git|g' setup.sh
-    ${pkgs.bash}/bin/sh setup.sh
+    pushd source
+    for patch in ../patches/*; do
+      echo "Applying patch $patch"
+      patch -p1 < $patch
+    done
+    popd
+    if [ -f config.h ]; then
+      echo "Copying configuration"
+      cp config.h source/config.h
+    fi
   '';
   buildPhase = preBuild + ''
     cd source
