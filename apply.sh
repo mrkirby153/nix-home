@@ -29,4 +29,11 @@ case $COMMAND in
 esac
 
 actual_hostname="${HOSTNAME:-$(hostname)}"
+
+if ! command -v home-manager &> /dev/null; then
+    echo "home-manager not found, running via nix"
+    nix run . "$CMD" -- --flake ".#$actual_hostname"
+    exit 0
+fi
+
 home-manager --max-jobs auto "$CMD" --flake ".#$actual_hostname"
