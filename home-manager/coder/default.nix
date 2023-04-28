@@ -5,5 +5,6 @@
     gdu
     tig
     gh
+    ripgrep
   ];
 }
