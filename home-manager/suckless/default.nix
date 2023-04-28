@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, graphical, ... }:
 let
   inherit (pkgs) callPackage;
   st = callPackage ./st.nix { };
@@ -7,10 +7,11 @@ let
 in
 {
 
-  home.packages = with pkgs; [
+  # Only include if graphical
+  home.packages = with pkgs; if graphical then [
     dwmblocks # Provided as a flake
     st
     dwm
     dmenu
-  ];
+  ] else [ ];
 }
