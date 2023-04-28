@@ -21,7 +21,7 @@
     linux = { username, discord ? false, graphical ? true }: home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
-      modules = [ ./home.nix ] ++ (if discord then [ ./home-manager/coder ./home-manager/vim ] else [ ./home-manager/suckless ]);
+      modules = [ ./home.nix ] ++ (if discord then [ ./home-manager/coder ./home-manager/vim ./home-manager/dotfiles ] else [ ./home-manager/suckless ]);
 
       extraSpecialArgs = {
         inherit dwmblocks;
