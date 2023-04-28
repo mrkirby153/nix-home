@@ -6,5 +6,6 @@
     tig
     gh
     ripgrep
+    zoxide
   ];
 }
