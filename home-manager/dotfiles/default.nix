@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, discord, ... }:
 let
   dotfiles = pkgs.callPackage ./scripts.nix { };
+  discord-dotfiles = pkgs.callPackage ./discord.nix { };
 in
 {
   home.packages = [
-    dotfiles
+    (if discord then discord-dotfiles else dotfiles)
   ];
 }
