@@ -1,15 +1,9 @@
-{ pkgs, graphical, ... }:
-let
-  inherit (pkgs) callPackage;
-  st = callPackage ./st.nix { };
-  dwm = callPackage ./dwm.nix { };
-  dmenu = callPackage ./dmenu.nix { };
-in
+{ pkgs, graphical, ... }@input:
 {
 
   # Only include if graphical
-  home.packages = with pkgs; if graphical then [
-    dwmblocks # Provided as a flake
+  home.packages = with pkgs.aus.suckless; if graphical then [
+    input.dwmblocks # Provided as a flake
     st
     dwm
     dmenu
