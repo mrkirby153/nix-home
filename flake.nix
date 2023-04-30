@@ -8,10 +8,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dwmblocks.url = "github:mrkirby153/dwmblocks";
-    rnix-lsp.url = "github:nix-community/rnix-lsp";
   };
 
-  outputs = { self, nixpkgs, home-manager, dwmblocks, rnix-lsp, ... }:
+  outputs = { self, nixpkgs, home-manager, dwmblocks, ... }:
     let
       customPkgs = (self: super: {
         aus = import ./pkg { pkgs = super; };
@@ -30,7 +29,6 @@
 
         extraSpecialArgs = {
           inherit dwmblocks;
-          inherit rnix-lsp;
           inherit graphical;
           inherit username;
           inherit discord;
@@ -44,7 +42,6 @@
         modules = [ ./home.nix ];
 
         extraSpecialArgs = {
-          inherit rnix-lsp;
           inherit username;
           inherit discord;
 

@@ -11,6 +11,6 @@ in
   home.packages = with pkgs; [
     httpie
     nix-prefetch-scripts
-    rnix-lsp
+    nil
   ];
 }
