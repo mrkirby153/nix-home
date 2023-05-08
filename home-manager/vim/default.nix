@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 let
   inherit (pkgs) vimUtils;
   inherit (vimUtils) buildVimPlugin;
@@ -44,45 +44,49 @@ let
 
 in
 {
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-    viAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      vim-vaffle
-      vim-surround
-      vim-repeat
-      conflict-marker-vim
-      neosnippet
-      neosnippet-snippets
-      vim-snippets
-      syntastic
-      vim-fugitive
-      webapi-vim
-      vim-gist
-      nerdcommenter
-      vim-commentary
-      tabular
-      tagbar
-      rainbow
-      vim-highlightedyank
-      python-mode
-      vim-json
-      vim-javascript
-      typescript-vim
-      vim-jsx-typescript
-      vim-jsx-pretty
-      vim-closetag
-      vim-css3-syntax
-      vim-coloresque
-      vim-haml
-      emmet-vim
-      vim-markdown
-      vim-toml
-      vim-airline
-      vim-airline-themes
-    ];
-    extraConfig = builtins.readFile ./annoyances.vim;
-    extraLuaConfig = builtins.toString (builtins.map (x: builtins.readFile x + "\n") [ ./keymap.lua ./autocmd.lua ]);
+  options.aus.programs.vim.enable = lib.mkEnableOption "Enable vim configuration";
+
+  config = lib.mkIf config.aus.programs.vim.enable {
+    programs.neovim = {
+      enable = true;
+      vimAlias = true;
+      viAlias = true;
+      plugins = with pkgs.vimPlugins; [
+        vim-vaffle
+        vim-surround
+        vim-repeat
+        conflict-marker-vim
+        neosnippet
+        neosnippet-snippets
+        vim-snippets
+        syntastic
+        vim-fugitive
+        webapi-vim
+        vim-gist
+        nerdcommenter
+        vim-commentary
+        tabular
+        tagbar
+        rainbow
+        vim-highlightedyank
+        python-mode
+        vim-json
+        vim-javascript
+        typescript-vim
+        vim-jsx-typescript
+        vim-jsx-pretty
+        vim-closetag
+        vim-css3-syntax
+        vim-coloresque
+        vim-haml
+        emmet-vim
+        vim-markdown
+        vim-toml
+        vim-airline
+        vim-airline-themes
+      ];
+      extraConfig = builtins.readFile ./annoyances.vim;
+      extraLuaConfig = builtins.toString (builtins.map (x: builtins.readFile x + "\n") [ ./keymap.lua ./autocmd.lua ]);
+    };
   };
 }
