@@ -2,10 +2,16 @@
   config,
   pkgs,
   lib,
+  my-dotfiles,
   ...
-}: let
-  discord-dotfiles = pkgs.callPackage ./discord.nix {};
-  dotfiles = (import ../../lib/dotfile-scripts {inherit pkgs;}).derivations;
+}@inputs: let
+  discord-dotfiles = pkgs.callPackage ./discord.nix {inherit (inputs) discord-dotfiles;};
+  dotfiles =
+    (import ../../lib/dotfile-scripts {
+      inherit pkgs;
+      inherit my-dotfiles;
+    })
+    .derivations;
 in {
   options.aus.programs.dotfiles.enable = lib.mkEnableOption "Enable dotfiles";
 

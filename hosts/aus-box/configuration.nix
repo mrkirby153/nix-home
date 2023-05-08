@@ -5,7 +5,7 @@
     programs = {
       suckless.enable = true;
       #   vim.enable = true;
-      #   dotfiles.enable = true;
+      dotfiles.enable = true;
     };
   };
 }

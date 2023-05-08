@@ -12,6 +12,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "flake-utils";
+    my-dotfiles = {
+      url = "github:mrkirby153/dotfiles";
+      flake = false;
+    };
+    discord-dotfiles = {
+      url = "git+ssh://git@github.com/mrkirby153/discord_dotfiles";
+      flake = false;
+    };
   };
 
   outputs = {

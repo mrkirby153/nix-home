@@ -1,10 +1,8 @@
-{pkgs}: let
-  gitRepo = pkgs.fetchgit {
-    url = "https://github.com/mrkirby153/dotfiles";
-    rev = "28760c57b1764d93f025d1e75256f5732c2d6f69";
-    sha256 = "sha256-VxRR9qa+A5SEBxgDLEAzehyNiFm/PLghrJjR8oPYv9o=";
-  };
-  source = "${gitRepo}/.local/bin";
+{
+  pkgs,
+  my-dotfiles,
+}: let
+  source = "${my-dotfiles}/.local/bin";
   loadScripts = (import ./discover_files.nix {inherit pkgs;}).loadScripts;
 
   scripts = loadScripts source;

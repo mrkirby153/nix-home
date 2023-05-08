@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "discord-dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1682965222,
+        "narHash": "sha256-6OZ6dzA8nm+k0+LlQOQuYuBdvo1P27pn+XF0hs5KWL4=",
+        "ref": "refs/heads/master",
+        "rev": "e709e368197ae9eab3274ee323b71b062efe9094",
+        "revCount": 32,
+        "type": "git",
+        "url": "ssh://git@github.com/mrkirby153/discord_dotfiles"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/mrkirby153/discord_dotfiles"
+      }
+    },
     "dwmblocks": {
       "inputs": {
         "nixpkgs": [
@@ -58,6 +74,22 @@
         "type": "github"
       }
     },
+    "my-dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681862713,
+        "narHash": "sha256-VxRR9qa+A5SEBxgDLEAzehyNiFm/PLghrJjR8oPYv9o=",
+        "owner": "mrkirby153",
+        "repo": "dotfiles",
+        "rev": "28760c57b1764d93f025d1e75256f5732c2d6f69",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrkirby153",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1682809678,
@@ -76,9 +108,11 @@
     },
     "root": {
       "inputs": {
+        "discord-dotfiles": "discord-dotfiles",
         "dwmblocks": "dwmblocks",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
+        "my-dotfiles": "my-dotfiles",
         "nixpkgs": "nixpkgs"
       }
     },
