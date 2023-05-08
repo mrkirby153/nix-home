@@ -4,8 +4,8 @@
     graphical = true;
     programs = {
       suckless.enable = true;
-    #   vim.enable = true;
-    #   dotfiles.enable = true;
+      #   vim.enable = true;
+      #   dotfiles.enable = true;
     };
   };
 }

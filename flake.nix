@@ -25,11 +25,10 @@
       aus = import ./pkg {pkgs = super;};
     };
   in
-    rec {
-      defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
-      defaultPackage.x86_64-darwin = home-manager.defaultPackage.x86_64-darwin;
-      defaultPackage.aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
-
+    flake-utils.lib.eachDefaultSystem (system: {
+      defaultPackage = home-manager.defaultPackage.${system};
+    })
+    // rec {
       mkSystem = {
         name,
         arch ? "x86_64-linux",
@@ -53,7 +52,7 @@
         "austinwhyte" = mkSystem {name = "coder";};
       };
     }
-    // flake-utils.lib.eachSystem ["x86_64-linux"] (system: let
+    // flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       formatter = pkgs.alejandra;
