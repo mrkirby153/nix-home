@@ -1,8 +1,11 @@
-{ pkgs, config, lib, ... }@input:
-let
-  dwmblocks = input.dwmblocks.outputs.packages.x86_64-linux.default;
-in
 {
+  pkgs,
+  config,
+  lib,
+  ...
+} @ input: let
+  dwmblocks = input.dwmblocks.outputs.packages.x86_64-linux.default;
+in {
   options.aus.graphical = lib.mkEnableOption "If this system is grpahical";
   options.aus.programs.suckless.enable = lib.mkEnableOption "Enable suckless packages";
 

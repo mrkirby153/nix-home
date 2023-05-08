@@ -7,42 +7,72 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dwmblocks.url = "github:mrkirby153/dwmblocks";
+    dwmblocks = {
+      url = "github:mrkirby153/dwmblocks";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-utils.url = "flake-utils";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
-    let
-      # Define overlay
-      overlay = (self: super: {
-        aus = import ./pkg { pkgs = super; };
-      });
+  outputs = {
+    nixpkgs,
+    home-manager,
+    flake-utils,
+    ...
+  } @ inputs: let
+    # Define overlay
+    overlay = self: super: {
+      aus = import ./pkg {pkgs = super;};
+    };
 
-      # Discover home-manager modules
-      inherit (builtins) readDir;
-      inherit (nixpkgs.lib) mapAttrs;
-      inherit (nixpkgs.lib.attrsets) filterAttrs;
+    # Discover home-manager modules
+    inherit (builtins) readDir;
+    inherit (nixpkgs.lib) mapAttrs;
+    inherit (nixpkgs.lib.attrsets) filterAttrs;
 
-      isDir = (name: type: type == "directory");
-      homeManagerModules = builtins.attrValues (mapAttrs (name: _value: ./home-manager/${name}) (filterAttrs isDir (readDir ./home-manager)));
-    in
+    isDir = name: type: type == "directory";
+    homeManagerModules = builtins.attrValues (mapAttrs (name: _value: ./home-manager/${name}) (filterAttrs isDir (readDir ./home-manager)));
+  in
     rec {
       defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
       defaultPackage.x86_64-darwin = home-manager.defaultPackage.x86_64-darwin;
       defaultPackage.aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
 
-      
-      mkSystem = { name, arch ? "x86_64-linux", extraModules ? [], extraArgs ? {}}: home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${arch}.extend overlay;
+      mkSystem = {
+        name,
+        arch ? "x86_64-linux",
+        extraModules ? [],
+        extraArgs ? {},
+      }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${arch}.extend overlay;
 
-        modules = [
-          ./hosts/${name}/configuration.nix
-        ] ++ homeManagerModules ++ extraModules;
-        extraSpecialArgs = inputs // extraArgs;
-      };
+          modules =
+            [
+              ./hosts/${name}/configuration.nix
+            ]
+            ++ homeManagerModules
+            ++ extraModules;
+          extraSpecialArgs = inputs // extraArgs;
+        };
 
       homeConfigurations = {
-        "aus-box" = mkSystem { name = "aus-box"; };
-        "austinwhyte" = mkSystem { name = "coder"; };
+        "aus-box" = mkSystem {name = "aus-box";};
+        "austinwhyte" = mkSystem {name = "coder";};
       };
-    };
+    }
+    // flake-utils.lib.eachSystem ["x86_64-linux"] (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      formatter = pkgs.alejandra;
+      devShells.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          cacert
+          curl
+          jq
+
+          nix-output-monitor
+        ];
+      };
+    });
 }

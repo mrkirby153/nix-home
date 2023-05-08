@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   config.aus = {
     username = "discord";
     work = true;

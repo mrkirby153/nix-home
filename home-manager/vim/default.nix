@@ -1,5 +1,9 @@
-{ pkgs, config, lib, ... }:
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   inherit (pkgs) vimUtils;
   inherit (vimUtils) buildVimPlugin;
   # Vim plugins not in nixpkgs
@@ -33,7 +37,8 @@ let
   };
   vim-haml = buildVimPlugin {
     name = "vim-haml";
-    src = pkgs.fetchFromGitHub
+    src =
+      pkgs.fetchFromGitHub
       {
         owner = "tpope";
         repo = "vim-haml";
@@ -41,9 +46,7 @@ let
         sha256 = "sha256-EebHAK/YMVzt1fiROVjBiuukRZLQgaCNNHqV2DBC3U4=";
       };
   };
-
-in
-{
+in {
   options.aus.programs.vim.enable = lib.mkEnableOption "Enable vim configuration";
 
   config = lib.mkIf config.aus.programs.vim.enable {
@@ -86,7 +89,7 @@ in
         vim-airline-themes
       ];
       extraConfig = builtins.readFile ./annoyances.vim;
-      extraLuaConfig = builtins.toString (builtins.map (x: builtins.readFile x + "\n") [ ./keymap.lua ./autocmd.lua ]);
+      extraLuaConfig = builtins.toString (builtins.map (x: builtins.readFile x + "\n") [./keymap.lua ./autocmd.lua]);
     };
   };
 }

@@ -1,7 +1,5 @@
-{ pkgs ? import <nixpkgs> { } }:
-let
+{pkgs ? import <nixpkgs> {}}: let
   inherit (pkgs) callPackage;
-in
-{
-  suckless = callPackage ./suckless { };
+in {
+  suckless = callPackage ./suckless {};
 }
