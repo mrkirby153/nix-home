@@ -24,14 +24,6 @@
     overlay = self: super: {
       aus = import ./pkg {pkgs = super;};
     };
-
-    # Discover home-manager modules
-    inherit (builtins) readDir;
-    inherit (nixpkgs.lib) mapAttrs;
-    inherit (nixpkgs.lib.attrsets) filterAttrs;
-
-    isDir = name: type: type == "directory";
-    homeManagerModules = builtins.attrValues (mapAttrs (name: _value: ./home-manager/${name}) (filterAttrs isDir (readDir ./home-manager)));
   in
     rec {
       defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
@@ -50,8 +42,8 @@
           modules =
             [
               ./hosts/${name}/configuration.nix
+              ./home-manager
             ]
-            ++ homeManagerModules
             ++ extraModules;
           extraSpecialArgs = inputs // extraArgs;
         };

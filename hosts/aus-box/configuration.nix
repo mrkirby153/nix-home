@@ -2,10 +2,10 @@
   config.aus = {
     username = "austin";
     graphical = true;
-    # programs = {
+    programs = {
+      suckless.enable = true;
     #   vim.enable = true;
-    #   suckless.enable = true;
     #   dotfiles.enable = true;
-    # };
+    };
   };
 }
