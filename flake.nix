@@ -31,18 +31,18 @@
       defaultPackage.aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
 
       
-      mkSystem = { name, arch }: home-manager.lib.homeManagerConfiguration {
+      mkSystem = { name, arch ? "x86_64-linux", extraModules ? [], extraArgs ? {}}: home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${arch}.extend overlay;
 
         modules = [
           ./hosts/${name}/configuration.nix
-        ] ++ homeManagerModules;
-        extraSpecialArgs = inputs;
+        ] ++ homeManagerModules ++ extraModules;
+        extraSpecialArgs = inputs // extraArgs;
       };
 
       homeConfigurations = {
-        "aus-box" = mkSystem { name = "aus-box"; arch = "x86_64-linux"; };
-        "austinwhyte" = mkSystem { name = "coder"; arch = "x86_64-linux";};
+        "aus-box" = mkSystem { name = "aus-box"; };
+        "austinwhyte" = mkSystem { name = "coder"; };
       };
     };
 }
