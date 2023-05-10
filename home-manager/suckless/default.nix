@@ -3,9 +3,8 @@
   config,
   lib,
   ...
-} @ input: let
-  dwmblocks = input.dwmblocks.packages.${pkgs.system}.default;
-in {
+}:
+{
   options.aus.graphical = lib.mkEnableOption "If this system is grpahical";
   options.aus.programs.suckless.enable = lib.mkEnableOption "Enable suckless packages";
 

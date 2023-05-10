@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dwmblocks = {
-      url = "github:mrkirby153/dwmblocks";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     my-nixpkgs = {
       url = "github:mrkirby153/nix-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";

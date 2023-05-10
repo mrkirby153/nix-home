@@ -16,27 +16,6 @@
         "url": "ssh://git@github.com/mrkirby153/discord_dotfiles"
       }
     },
-    "dwmblocks": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": "utils"
-      },
-      "locked": {
-        "lastModified": 1682882998,
-        "narHash": "sha256-FnxQ5bfIs3qg9ZMhQSuGd9TJsEeAhJqmQ8XReFlPqG0=",
-        "owner": "mrkirby153",
-        "repo": "dwmblocks",
-        "rev": "cab6979eae0d5761b316baa2ee464b87f86fced8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mrkirby153",
-        "repo": "dwmblocks",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -55,7 +34,7 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems_2"
+        "systems": "systems"
       },
       "locked": {
         "lastModified": 1681202837,
@@ -77,11 +56,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1682779989,
-        "narHash": "sha256-H8AjcIBYFYrlRobYJ+n1B+ZJ6TsaaeZpuLn4iRqVvr4=",
+        "lastModified": 1683651229,
+        "narHash": "sha256-HN0Mw8g1XQIrcdyzqT00YW0Uqi/V/BUUUAgvcK1pcSM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "3144311f31194b537808ae6848f86f3dbf977d59",
+        "rev": "983f8a1bb965b261492123cd8e2d07da46d4d50a",
         "type": "github"
       },
       "original": {
@@ -93,11 +72,11 @@
     "my-dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1681862713,
-        "narHash": "sha256-VxRR9qa+A5SEBxgDLEAzehyNiFm/PLghrJjR8oPYv9o=",
+        "lastModified": 1683688276,
+        "narHash": "sha256-fvia7wTCCEWBK4KCvTAUImU6G6B0fh7NROrc0H/EQEA=",
         "owner": "mrkirby153",
         "repo": "dotfiles",
-        "rev": "28760c57b1764d93f025d1e75256f5732c2d6f69",
+        "rev": "516c07dca4a7447cbdfe50c504fb68060908e0e3",
         "type": "github"
       },
       "original": {
@@ -114,11 +93,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1683697490,
-        "narHash": "sha256-U5iX/eSpuY3knXcS4CLSwImAGepkgZ8TK/iRkX8ABGY=",
+        "lastModified": 1683698265,
+        "narHash": "sha256-7XsJR5+VvDsih930wl9Y4kC2hkMO8tZm1A03kNqcIAM=",
         "owner": "mrkirby153",
         "repo": "nix-pkgs",
-        "rev": "2da8f7463b95223930b0841dcb496e0cd25d5179",
+        "rev": "c5d1a9cecc96a23af07911666090e4b702d4deee",
         "type": "github"
       },
       "original": {
@@ -129,11 +108,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1682809678,
-        "narHash": "sha256-jqR8t82mWotOSgnWZvr6xXCO/tc3fCPTLMPvI7Jo5rA=",
+        "lastModified": 1683657389,
+        "narHash": "sha256-jx91UqqoBneE8QPAKJA29GANrU/Z7ULghoa/JE0+Edw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3dcff817eebb7e4afc4e9eae0ce6f722f4d9e399",
+        "rev": "9524f57dd5b3944c819dd594aed8ed941932ef56",
         "type": "github"
       },
       "original": {
@@ -146,7 +125,6 @@
     "root": {
       "inputs": {
         "discord-dotfiles": "discord-dotfiles",
-        "dwmblocks": "dwmblocks",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "my-dotfiles": "my-dotfiles",
@@ -166,39 +144,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_2": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "inputs": {
-        "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1681202837,
-        "narHash": "sha256-H+Rh19JDwRtpVPAWp64F+rlEtxUWBAQW28eAi3SRSzg=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "cfacdce06f30d2b68473a46042957675eebb3401",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }
