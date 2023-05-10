@@ -37,6 +37,22 @@
         "type": "github"
       }
     },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673956053,
+        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems_2"
@@ -90,6 +106,27 @@
         "type": "github"
       }
     },
+    "my-nixpkgs": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1683697490,
+        "narHash": "sha256-U5iX/eSpuY3knXcS4CLSwImAGepkgZ8TK/iRkX8ABGY=",
+        "owner": "mrkirby153",
+        "repo": "nix-pkgs",
+        "rev": "2da8f7463b95223930b0841dcb496e0cd25d5179",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrkirby153",
+        "repo": "nix-pkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1682809678,
@@ -113,6 +150,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "my-dotfiles": "my-dotfiles",
+        "my-nixpkgs": "my-nixpkgs",
         "nixpkgs": "nixpkgs"
       }
     },

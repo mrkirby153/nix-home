@@ -11,7 +11,12 @@
       url = "github:mrkirby153/dwmblocks";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    my-nixpkgs = {
+      url = "github:mrkirby153/nix-pkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils.url = "flake-utils";
+
     my-dotfiles = {
       url = "github:mrkirby153/dotfiles";
       flake = false;
@@ -26,13 +31,9 @@
     nixpkgs,
     home-manager,
     flake-utils,
+    my-nixpkgs,
     ...
-  } @ inputs: let
-    # Define overlay
-    overlay = self: super: {
-      aus = import ./pkg {pkgs = super;};
-    };
-  in
+  } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: {
       defaultPackage = home-manager.defaultPackage.${system};
     })
@@ -44,7 +45,9 @@
         extraArgs ? {},
       }:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${arch}.extend overlay;
+          pkgs = nixpkgs.legacyPackages.${arch}.extend (self: super: {
+            aus = my-nixpkgs.outputs.packages.${arch};
+          });
 
           modules =
             [
