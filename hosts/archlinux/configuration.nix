@@ -1,7 +1,6 @@
-{ ... }:
-{
-    config.aus = {
-        username = "austin";
-        graphical = true;
-    };
+{...}: {
+  config.aus = {
+    username = "austin";
+    graphical = true;
+  };
 }

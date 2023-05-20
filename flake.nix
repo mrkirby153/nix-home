@@ -57,7 +57,7 @@
       homeConfigurations = {
         "aus-box" = mkSystem {name = "aus-box";};
         "austinwhyte" = mkSystem {name = "coder";};
-        "archlinux" = mkSystem { name = "archlinux"; };
+        "archlinux" = mkSystem {name = "archlinux";};
       };
     }
     // flake-utils.lib.eachDefaultSystem (system: let

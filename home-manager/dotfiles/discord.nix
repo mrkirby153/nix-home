@@ -1,4 +1,8 @@
-{pkgs, discord-dotfiles, ...}:
+{
+  pkgs,
+  discord-dotfiles,
+  ...
+}:
 pkgs.stdenv.mkDerivation {
   name = "discord_dotfiles";
   version = "0.0.1";

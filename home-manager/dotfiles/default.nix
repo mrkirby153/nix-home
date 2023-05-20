@@ -4,7 +4,7 @@
   lib,
   my-dotfiles,
   ...
-}@inputs: let
+} @ inputs: let
   discord-dotfiles = pkgs.callPackage ./discord.nix {inherit (inputs) discord-dotfiles;};
   dotfiles =
     (import ../../lib/dotfile-scripts {
