@@ -5,5 +5,8 @@
     programs = {
       dotfiles.enable = true;
     };
+    nix = {
+      enable = true;
+    };
   };
 }
