@@ -21,7 +21,7 @@
     home.packages =
       if config.aus.nix.cachix
       then [
-        pkgs.haskellPackages.cachix_1_3_3 # Use 1.3.3 as the latest version is kinda buggy
+        pkgs.cachix
       ]
       else [];
   };
