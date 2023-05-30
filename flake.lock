@@ -3,11 +3,11 @@
     "discord-dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1682965222,
-        "narHash": "sha256-6OZ6dzA8nm+k0+LlQOQuYuBdvo1P27pn+XF0hs5KWL4=",
-        "ref": "refs/heads/master",
-        "rev": "e709e368197ae9eab3274ee323b71b062efe9094",
-        "revCount": 32,
+        "lastModified": 1685480097,
+        "narHash": "sha256-xEtome2LCRhT3Tc6K+pMp6afpe9JPlwRcHGFUxF15qA=",
+        "ref": "master",
+        "rev": "004f2dee5e5f0671bc99430be79eca19e815ba72",
+        "revCount": 33,
         "type": "git",
         "url": "ssh://git@github.com/mrkirby153/discord_dotfiles"
       },
