@@ -39,12 +39,14 @@
         arch ? "x86_64-linux",
         extraModules ? [],
         extraArgs ? {},
-      }:
+      }: let
+        pkgs = import nixpkgs {
+          system = arch;
+          overlays = [my-nixpkgs.overlays.default];
+        };
+      in
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${arch}.extend (self: super: {
-            aus = my-nixpkgs.outputs.packages.${arch};
-          });
-
+          inherit pkgs;
           modules =
             [
               ./hosts/${name}/configuration.nix
