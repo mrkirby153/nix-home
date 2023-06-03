@@ -27,6 +27,7 @@ in {
       httpie
       nix-prefetch-scripts
       nil
+      comma
     ];
   };
 }
