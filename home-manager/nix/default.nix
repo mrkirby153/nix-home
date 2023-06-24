@@ -9,10 +9,6 @@
     cachix = lib.mkEnableOption "Install cachix";
   };
 
-  imports = [
-    ./cache.nix
-  ];
-
   config = lib.mkIf config.aus.nix.enable {
     nix.package = pkgs.nix;
     nix.settings = {
