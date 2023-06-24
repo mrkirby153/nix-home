@@ -29,6 +29,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     home-manager,
     flake-utils,
@@ -66,6 +67,7 @@
         "austinwhyte" = mkSystem {name = "coder";};
         "archlinux" = mkSystem {name = "archlinux";};
       };
+      hydraJobs = import ./hydra.nix { inherit inputs; outputs = self.outputs; };
     }
     // flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
