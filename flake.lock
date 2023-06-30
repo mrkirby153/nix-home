@@ -32,22 +32,6 @@
         "type": "github"
       }
     },
-    "discord-dotfiles": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1685480097,
-        "narHash": "sha256-xEtome2LCRhT3Tc6K+pMp6afpe9JPlwRcHGFUxF15qA=",
-        "ref": "master",
-        "rev": "004f2dee5e5f0671bc99430be79eca19e815ba72",
-        "revCount": 33,
-        "type": "git",
-        "url": "ssh://git@github.com/mrkirby153/discord_dotfiles"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/mrkirby153/discord_dotfiles"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -255,7 +239,6 @@
     },
     "root": {
       "inputs": {
-        "discord-dotfiles": "discord-dotfiles",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "my-dotfiles": "my-dotfiles",

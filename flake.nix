@@ -22,10 +22,6 @@
       url = "github:mrkirby153/dotfiles";
       flake = false;
     };
-    discord-dotfiles = {
-      url = "git+ssh://git@github.com/mrkirby153/discord_dotfiles";
-      flake = false;
-    };
   };
 
   outputs = {
@@ -64,7 +60,6 @@
 
       homeConfigurations = {
         "aus-box" = mkSystem {name = "aus-box";};
-        "austinwhyte" = mkSystem {name = "coder";};
         "archlinux" = mkSystem {name = "archlinux";};
       };
       hydraJobs = import ./hydra.nix { inherit inputs; outputs = self.outputs; };
