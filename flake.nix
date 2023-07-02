@@ -2,8 +2,8 @@
   description = "Home manager configuration";
 
   nixConfig = {
-    extra-trusted-public-keys = "mrkirby153.cachix.org-1:3OAJDKkNWKVSipjFG6jwS5uBsMZ6lLKAEz18k2zKZjw=";
-    extra-substituters = "https://mrkirby153.cachix.org";
+    extra-trusted-public-keys = "cache.mrkirby153.com:FUmgThcD58ed1M7MNOXWx7vC2ebnFqrc3gVgsqdNXJ0=";
+    extra-substituters = "https://cache.mrkirby153.com";
   };
 
   inputs = {
