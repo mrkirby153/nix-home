@@ -32,8 +32,8 @@ actual_hostname="${HOSTNAME:-$(hostname)}"
 
 if ! type home-manager > /dev/null; then
     echo "home-manager not found, running via nix"
-    nix run --extra-experimental-features "nix-command flakes" . "$CMD" -- --flake ".#$actual_hostname" -b backup
+    nix run --extra-experimental-features "nix-command flakes" . "$CMD" -- --flake ".#$actual_hostname" -b backup --extra-experimental-features "nix-command flakes"
     exit 0
 fi
 
-home-manager --extra-experimental-features "nix-command flakes" --max-jobs auto "$CMD" --flake ".#$actual_hostname" -b backup
+home-manager --extra-experimental-features "nix-command flakes" --max-jobs auto "$CMD" --flake ".#$actual_hostname" -b backup --extra-experimental-features "nix-command flakes"
