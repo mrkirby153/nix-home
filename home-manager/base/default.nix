@@ -23,6 +23,8 @@ in {
     home.stateVersion = "22.11";
     programs.home-manager.enable = true;
 
+    news.display = "silent";
+
     home.packages = with pkgs; [
       httpie
       nix-prefetch-scripts
