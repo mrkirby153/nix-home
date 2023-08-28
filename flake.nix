@@ -11,6 +11,10 @@
       url = "github:mrkirby153/nix-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvim = {
+      url = "github:mrkirby153/nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils.url = "flake-utils";
 
     my-dotfiles = {
@@ -25,6 +29,7 @@
     home-manager,
     flake-utils,
     my-nixpkgs,
+    nvim,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: {
@@ -56,9 +61,12 @@
       homeConfigurations = {
         "aus-box" = mkSystem {name = "aus-box";};
         "archlinux" = mkSystem {name = "archlinux";};
-        "malos" = mkSystem { name = "malos"; };
+        "malos" = mkSystem {name = "malos";};
       };
-      hydraJobs = import ./hydra.nix { inherit inputs; outputs = self.outputs; };
+      hydraJobs = import ./hydra.nix {
+        inherit inputs;
+        outputs = self.outputs;
+      };
     }
     // flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
@@ -74,7 +82,7 @@
         ];
       };
       packages = let
-        pkg = import ./pkg { inherit pkgs; };
+        pkg = import ./pkg {inherit pkgs;};
       in {
         dwmblocks = pkg.dwmblocks;
       };

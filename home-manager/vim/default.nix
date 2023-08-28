@@ -2,17 +2,15 @@
   pkgs,
   config,
   lib,
+  nvim,
   ...
-}:
-{
+}: {
   options.aus.programs.vim.enable = lib.mkEnableOption "Enable vim configuration";
 
   config = lib.mkIf config.aus.programs.vim.enable {
-    programs.neovim = {
-      enable = true;
-      vimAlias = true;
-      viAlias = true;
-      package = pkgs.aus.nvim;
-    };
+    home.packages = [
+      # Using the overlay doesn't work for some reason
+      nvim.packages.${pkgs.system}.default
+    ];
   };
 }
