@@ -1,11 +1,6 @@
 {
   description = "Home manager configuration";
 
-  nixConfig = {
-    extra-trusted-public-keys = "cache.mrkirby153.com:FUmgThcD58ed1M7MNOXWx7vC2ebnFqrc3gVgsqdNXJ0=";
-    extra-substituters = "https://cache.mrkirby153.com";
-  };
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
@@ -61,6 +56,7 @@
       homeConfigurations = {
         "aus-box" = mkSystem {name = "aus-box";};
         "archlinux" = mkSystem {name = "archlinux";};
+        "malos" = mkSystem { name = "malos"; };
       };
       hydraJobs = import ./hydra.nix { inherit inputs; outputs = self.outputs; };
     }
@@ -76,6 +72,11 @@
 
           nix-output-monitor
         ];
+      };
+      packages = let
+        pkg = import ./pkg { inherit pkgs; };
+      in {
+        dwmblocks = pkg.dwmblocks;
       };
     });
 }
