@@ -21,6 +21,10 @@
       url = "github:mrkirby153/dotfiles";
       flake = false;
     };
+    attic = {
+      url = "github:zhaofengli/attic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -30,6 +34,7 @@
     flake-utils,
     my-nixpkgs,
     nvim,
+    attic,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: {
@@ -44,7 +49,7 @@
       }: let
         pkgs = import nixpkgs {
           system = arch;
-          overlays = [my-nixpkgs.overlays.default];
+          overlays = [my-nixpkgs.overlays.default attic.overlays.default];
         };
       in
         home-manager.lib.homeManagerConfiguration {
